@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Valentine Day ❤️</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:radial-gradient(circle at top,#ffb6c1,#800020);
+    color:white;
+    overflow:hidden;
+}
+
+/* ================= LOADING ================= */
+#loading{
+    position:fixed;
+    inset:0;
+    background:linear-gradient(135deg,#ff5fa2,#800020);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    z-index:9999;
+}
+
+#loading-text{
+    font-size:1.8rem;
+    margin-bottom:10px;
+}
+
+.heartbeat{
+    font-size:3rem;
+    animation:beat 1s infinite;
+}
+
+@keyframes beat{
+    0%{transform:scale(1)}
+    30%{transform:scale(1.2)}
+    60%{transform:scale(1)}
+    100%{transform:scale(1)}
+}
+
+#percent{
+    font-size:1.5rem;
+    margin:10px 0;
+}
+
+.progress-box{
+    width:70%;
+    max-width:320px;
+    height:14px;
+    background:rgba(255,255,255,.25);
+    border-radius:20px;
+    overflow:hidden;
+}
+
+.progress-bar{
+    width:0%;
+    height:100%;
+    background:linear-gradient(90deg,#ff1e56,#ffd1dc);
+    box-shadow:0 0 15px #ff9bb8;
+    border-radius:20px;
+}
+
+/* ================= LOVE EFFECT ================= */
+.love-layer{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:1;
+}
+
+.love{
+    position:absolute;
+    top:-40px;
+    animation:fall linear forwards;
+}
+
+@keyframes fall{
+    to{
+        transform:translateY(110vh) rotate(360deg);
+        opacity:0;
+    }
+}
+
+.floating-love{
+    position:absolute;
+    bottom:-40px;
+    animation:floatUp linear forwards;
+    opacity:.6;
+}
+
+@keyframes floatUp{
+    to{transform:translateY(-120vh)}
+}
+
+.explode{
+    animation:explode .6s forwards;
+}
+
+@keyframes explode{
+    to{
+        transform:scale(2);
+        opacity:0;
+    }
+}
+
+/* ================= SLIDER ================= */
+#slider{
+    display:none;
+    width:100vw;
+    height:100vh;
+    display:flex;
+    transition:transform .9s ease-in-out;
+    position:relative;
+    z-index:2;
+}
+
+.slide{
+    min-width:100vw;
+    height:100vh;
+    padding:40px 20px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+}
+
+.photo{
+    width:70%;
+    max-width:280px;
+    aspect-ratio:3/4;
+    border-radius:20px;
+    overflow:hidden;
+    margin-bottom:15px;
+    box-shadow:0 15px 40px rgba(0,0,0,.4);
+}
+
+.photo img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.buttons{
+    display:flex;
+    gap:15px;
+    margin-top:15px;
+}
+
+button{
+    padding:12px 22px;
+    border:none;
+    border-radius:30px;
+    background:linear-gradient(135deg,#ff5fa2,#ff1e56);
+    color:white;
+    font-size:1rem;
+    cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<!-- LOADING -->
+<div id="loading">
+    <div class="heartbeat">💖</div>
+    <div id="loading-text"></div>
+    <div id="percent">0%</div>
+    <div class="progress-box">
+        <div class="progress-bar" id="bar"></div>
+    </div>
+</div>
+
+<!-- LOVE EFFECT -->
+<div class="love-layer" id="loveLayer"></div>
+
+<!-- SLIDER -->
+<div class="slider" id="slider">
+
+<div class="slide">
+    <h1>Happyy Valentine Daayy baaabyyyy💘</h1>
+    <p>Klik tombol "Mulai" buaat liaat kejutaaan darii akuuu mwehehhehe💕</p>
+    <div class="buttons">
+        <button onclick="nextSlide()">Mulai 💖</button>
+    </div>
+</div>
+<div class="slide">
+    <h2>oohh iyaaa, bacanyaaa sambiil dengeel laguu inii yaaaa, bacanyaaa jangaaan cepeet cepeet, pelaan pelaaan sajaa bacanyaaa sambiill dihayatii heheheee💕</h2>
+    
+    <h1>"FOR MYY LOVEEEEE"</h1>
+
+    <audio id="song" src="Sempurna.mp3"></audio>
+
+    <div class="buttons">
+        <button onclick="prevSlide()">Back ⬅</button>
+
+        <button onclick="
+            document.getElementById('song').play();
+            document.getElementById('nextBtn').style.display='inline-block';
+            this.innerText='Lagi Diputar 💕';
+            this.disabled=true;
+        ">
+            Putar 🎶
+        </button>
+
+        <button id="nextBtn" onclick="nextSlide()" style="display:none;">
+            Next ➡
+        </button>
+    </div>
+</div>
+<!-- SLIDE FOTO 1–8 -->
+<div class="slide"><div class="photo"><img src="IMG_20250714_160825_387.jpg"></div><p>ingett inii gaa? inii momeen pertama kalii kitaa saliing kenaal dan mulaai dekeett</p><div class="buttons"><button onclick="prevSlide()">Back</button><button onclick="nextSlide()">Next</button></div></div>
+<div class="slide"><div class="photo"><img src="IMG_20250824_165108_925.jpg"></div><p>24 Agustus 2025, momeen inii siii yaang gaa akaan pernaah lupaaa, pertamaa kaliii kitaaa ngedate daann awaall kisaaah lucuuuu dimulaaaii aliaas JADIAAAN SKWSJSKSJKSWJSO</p><div class="buttons"><button onclick="prevSlide()">Back</button><button onclick="nextSlide()">Next</button></div></div>
+<div class="slide"><div class="photo"><img src="IMG_20250921_182708_384.jpg"></div><p>inii jugaa salaah satuu momeeen yaang sangaaatt amaat spesiaal buaat akuuu, pertamaa kalii akuu nontoon daan bareeng kamuuu nontoonnnyaaa omaygaaat!!</p><div class="buttons"><button onclick="prevSlide()">Back</button><button onclick="nextSlide()">Next</button></div></div>
+<div class="slide"><div class="photo"><img src="IMG_20251014_212232_411.jpg"></div><p>banyaaak momeeen spesiaaal yaang telaah kitaaa buaat, akuu sukaaa, sukaaa bangeett!!, akuu haraap kamuu jugaa sukaaa hihihiiii</p><div class="buttons"><button onclick="prevSlide()">Back</button><button onclick="nextSlide()">Next</button></div></div>
+<div class="slide"><div class="photo"><img src="IMG_20260104_185153_413.jpg"></div><p>akuu cumaaa mauuu bilaaangg telimaaciiiii, TELIMAAACIIII BUAAAT SEMUUUAANYAAAA</p><div class="buttons"><button onclick="prevSlide()">Back</button><button onclick="nextSlide()">Next</button></div></div>
+<div class="slide"><div class="photo"><img src="IMG-20260208-WA0040.jpg"></div><p>disaat hatii akuu tertutuup darii oraang, muncuul kamuuu yaang entah gimanaa caraanyaaa kamuu bisaa ngebukaa hatii akuu, akuu beneer beneer ngerasaaa jatuuh cintaaa lagiiii, akuu beneer beneer gabisaa ngelakuiinn apaapuun selaiinn ngikutiin apaa kataa hatii akuuu daan akhiirnyaaa akuu miliih kamuu karenaa hatii akuu bilaang "piliih diaa" </p><div class="buttons"><button onclick="prevSlide()">Back</button><button onclick="nextSlide()">Next</button></div></div>
+<div class="slide"><div class="photo"><img src="IMG_20251207_184159_483.jpg"></div><p>daan kamuuu lebiih darii sekedaar ituuu, kamuuu tempat akuu pulaaang disaat akuu capeee, akuu beneer beneer beruntuung bangeet punyaa kamuu disisii akuu, kamuu selaluuu adaaa buaat akuuu huhuhuuuu...</p><div class="buttons"><button onclick="prevSlide()">Back</button><button onclick="nextSlide()">Next</button></div></div>
+<div class="slide"><div class="photo"><img src="foto8.jpg"></div><p>telimaaciii yaaaa untuuk semuaaa haal yaaang telaaah kamuuu lakukaan ke akuuu, akuu beneel beneel beruntung bangeett punyaaa kamuuu disiniii, daan akuu haraaap kitaaa selaluu bersamaaa melewatii semuaa badaaii yaang adaa didepaan, akuu akaan selaluu melindungii kamuu darii badaai badaaii yaang akaan dataaang. I LOVEEEE YOUUUUU MOREEEEE</p><div class="buttons"><button onclick="prevSlide()">Back</button><button onclick="nextSlide()">Next</button></div></div>
+<script>
+/* ===== LOADING TEXT ===== */
+const text="sabaar yaaa cantiiik 💕";
+let i=0;
+const textEl=document.getElementById("loading-text");
+const type=setInterval(()=>{
+    textEl.innerHTML+=text.charAt(i);
+    i++;
+    if(i>=text.length) clearInterval(type);
+},100);
+
+/* ===== LOADING BAR ===== */
+let p=0;
+const bar=document.getElementById("bar");
+const percent=document.getElementById("percent");
+const loading=document.getElementById("loading");
+const slider=document.getElementById("slider");
+
+const load=setInterval(()=>{
+    p++;
+    bar.style.width=p+"%";
+    percent.innerText=p+"%";
+    if(p>=100){
+        clearInterval(load);
+        setTimeout(()=>{
+            loading.style.display="none";
+            slider.style.display="flex";
+        },500);
+    }
+},50);
+
+/* ===== SLIDER ===== */
+let index=0;
+const slides=document.querySelectorAll(".slide");
+function updateSlide(){
+    slider.style.transform=`translateX(-${index*100}vw)`;
+    explode();
+}
+function nextSlide(){ if(index<slides.length-1){index++;updateSlide();}}
+function prevSlide(){ if(index>0){index--;updateSlide();}}
+
+/* ===== LOVE EFFECT ===== */
+const loveLayer=document.getElementById("loveLayer");
+const hearts=["❤️","💖","💕","💘","💗","💓","💞"];
+
+setInterval(()=>{
+    const l=document.createElement("div");
+    l.className="love";
+    l.innerText=hearts[Math.floor(Math.random()*hearts.length)];
+    l.style.left=Math.random()*100+"vw";
+    l.style.fontSize=Math.random()*20+15+"px";
+    l.style.animationDuration=Math.random()*3+4+"s";
+    loveLayer.appendChild(l);
+    setTimeout(()=>l.remove(),7000);
+},120);
+
+setInterval(()=>{
+    const l=document.createElement("div");
+    l.className="floating-love";
+    l.innerText=hearts[Math.floor(Math.random()*hearts.length)];
+    l.style.left=Math.random()*100+"vw";
+    l.style.fontSize=Math.random()*20+10+"px";
+    l.style.animationDuration=Math.random()*6+8+"s";
+    loveLayer.appendChild(l);
+    setTimeout(()=>l.remove(),12000);
+},600);
+
+function explode(){
+    for(let i=0;i<12;i++){
+        const l=document.createElement("div");
+        l.innerText=hearts[Math.floor(Math.random()*hearts.length)];
+        l.style.position="absolute";
+        l.style.left="50%";
+        l.style.top="50%";
+        l.className="explode";
+        loveLayer.appendChild(l);
+        setTimeout(()=>l.remove(),600);
+    }
+}
+
+document.addEventListener("click",e=>{
+    for(let i=0;i<6;i++){
+        const l=document.createElement("div");
+        l.innerText=hearts[Math.floor(Math.random()*hearts.length)];
+        l.style.position="absolute";
+        l.style.left=e.clientX+"px";
+        l.style.top=e.clientY+"px";
+        l.className="explode";
+        loveLayer.appendChild(l);
+        setTimeout(()=>l.remove(),600);
+    }
+});
+</script>
+
+</body>
+</html>
